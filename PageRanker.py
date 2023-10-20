@@ -59,7 +59,33 @@ def PageRanker(A):
             elif A[i,j]==1 and i==5:
                 newVal = 1/total6
                 M[i,j] = newVal
-  #Now the array M is made
+    #initialize a vector named r with size 6 and each value is 1/6
+    #s = vector size 6 with all entries equal to 1/6
+    #threshold of 1e -6
+    a = 0.85
+    r = np.array([1/6,1/6,1/6,1/6,1/6,1/6], dtype = np.float64)
+    s = np.array([1/6,1/6,1/6,1/6,1/6,1/6], dtype = np.float64)
+    threshold = 1e-6
+    
+    #updating r until the difference between consecultive r values is
+    #below threshold
+    converges = True
+    while not converges:
+        updated_r = a * np.dot(M,r) + (1-a)*s
+        difference1 = abs(r[0]-updated_r[0])
+        difference2 = abs(r[1]-updated_r[1])
+        difference3 = abs(r[2]-updated_r[2])
+        difference4 = abs(r[3]-updated_r[3])
+        difference5 = abs(r[4]-updated_r[4])
+        difference6 = abs(r[5]-updated_r[5])
+        if difference1<threshold and difference2<threshold and difference3<threshold and difference4 <threshold and difference5< threshold and difference6< threshold:
+             converges = False
+        else:
+            r = updated_r
+    return r
+        
+    
+  
   
 
                 
