@@ -41,24 +41,25 @@ def PageRanker(A):
     #I will be looping through the matrix A to find 1s and replace them
     for i in range (0,5):
         for j in range (0,5):
-            if A[i,j]==1 and i==0:
-                newVal = 1/total1
-                M[i,j] = newVal
-            elif A[i,j]==1 and i==1:
-                newVal = 1/total2
-                M[i,j]== newVal
-            elif A[i,j]==1 and i==2:
-                newVal = 1/total3
-                M[i,j]== newVal
-            elif A[i,j]==1 and i==3:
-                newVal = 1/total4
-                M[i,j] = 1/newVal
-            elif A[i,j]==1 and i==4:
-                newVal = 1/total5
-                M[i,j] = newVal
-            elif A[i,j]==1 and i==5:
-                newVal = 1/total6
-                M[i,j] = newVal
+            if A[i,j]==1:
+                if i==0:
+                    newVal = 1/total1
+                    M[i,j] = newVal
+                elif i==1:
+                    newVal = 1/total2
+                    M[i,j]== newVal
+                elif i==2:
+                    newVal = 1/total3
+                    M[i,j]== newVal
+                elif i==3:
+                    newVal = 1/total4
+                    M[i,j] = 1/newVal
+                elif i==4:
+                    newVal = 1/total5
+                    M[i,j] = newVal
+                elif i==5:
+                    newVal = 1/total6
+                    M[i,j] = newVal
     #initialize a vector named r with size 6 and each value is 1/6
     #s = vector size 6 with all entries equal to 1/6
     #threshold of 1e -6
