@@ -27,9 +27,11 @@ grid[10, 11] = True
 # 4. if the current cell is false and has exactly three will relive
 #   becomes true
 #eight enighbors are the boxes around
+#I will be making it so that the neighbors are changed into a new grid so it doesnt change it automatically
 def evolve(grid):
     countTrue = 0
     countFalse = 0
+    updatedGrid = np.zeros((20,20), dtype = bool)
     for i in range (0, 19):
         for j in range (0,19):
             if grid[(i+1)%20, j]== True:
@@ -49,5 +51,15 @@ def evolve(grid):
             if grid[(i-1)%20, (j+1)%20]== True:
                 countTrue +=1
             countFalse = 8-countTrue
-            #now applying the cell condicitions
-            if 
+            #now applying the cell conditions
+            if grid[i,j]==True:
+                if countTrue <2:
+                    updatedGrid[i,j] = False
+                if countTrue==2 or countTrue==3:
+                    updatedGrid[i,j] = True
+                if countTrue>3:
+                    updatedGrid[i,j] = False
+            elif grid[i,j]==False:
+                if countTrue==3:
+                    updatedGrid[i,j] = True
+    
