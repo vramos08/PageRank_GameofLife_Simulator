@@ -32,7 +32,7 @@ def PageRanker(A):
             elif i==4:
                 total5 = total5 + A[i,j]
             else:
-                    total6 = total6 + A[i,j]
+                total6 = total6 + A[i,j]
     #now i know the total for each column, I will be changing it so that
     #it will become 1/total for each 1
     
@@ -50,7 +50,7 @@ def PageRanker(A):
                     M[i,j]== newVal
                 elif i==2:
                     newVal = 1/total3
-                    M[i,j]== newVal
+                    M[i,j] = newVal
                 elif i==3:
                     newVal = 1/total4
                     M[i,j] = 1/newVal
@@ -71,7 +71,7 @@ def PageRanker(A):
     #updating r until the difference between consecultive r values is
     #below threshold
     converges = True
-    while not converges:
+    while converges:
         updated_r = a * np.dot(M,r) + (1-a)*s
         difference1 = abs(r[0]-updated_r[0])
         difference2 = abs(r[1]-updated_r[1])
@@ -84,12 +84,21 @@ def PageRanker(A):
         else:
             r = updated_r
     return r
-        
-    
-  
-  
 
-                
+#Testing my code for this section
+A = np.array([
+    [0, 1, 1, 0, 0, 0],
+    [0, 0, 1, 1, 0, 0],
+    [1, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 1, 0],
+    [0, 1, 0, 1, 0, 1],
+    [0, 0, 0, 0, 1, 0]
+])
+
+test = PageRanker(A)
+print(test)
+
+
     
     
     
